@@ -7,12 +7,13 @@ class Node:
 class BinaryTree:
     def __init__(self, root):
         self.root = root
-        self.right_stack = []
 
     def preorder_traversal(self):
         """
-        Use a stack to store the branches that need to be traversed.
+        Use a stack to store the branches that still need to be traversed
+        after a pass. A pass is complete when None is reached.
         """
+        self.right_stack = []
         cursor = self.root
         while cursor:
             if cursor.right:
@@ -20,6 +21,8 @@ class BinaryTree:
             print(cursor.data)
             cursor = cursor.left
 
+            # If we hit a leaf while going down the left, pop a
+            # node off the stack and make a pass from that point.
             if not cursor:
                 if len(self.right_stack) > 0:
                     cursor = self.right_stack.pop()
@@ -59,7 +62,7 @@ for node in node_list:
     print()
 
 # Set up a tree and traverse it
-victory_tree = Tree(nodeA)
+victory_tree = BinaryTree(nodeA)
 victory_tree.preorder_traversal()
 
 
