@@ -4,12 +4,15 @@ class Node:
         self.left = left
         self.right = right
 
-class Tree:
+class BinaryTree:
     def __init__(self, root):
         self.root = root
         self.right_stack = []
 
     def preorder_traversal(self):
+        """
+        Use a stack to store the branches that need to be traversed.
+        """
         cursor = self.root
         while cursor:
             if cursor.right:
