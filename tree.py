@@ -13,19 +13,19 @@ class BinaryTree:
         Use a stack to store the branches that still need to be traversed
         after a pass. A pass is complete when None is reached.
         """
-        self.right_stack = []
+        right_stack = []
         cursor = self.root
         while cursor:
             if cursor.right:
-                self.right_stack.append(cursor.right)
+                right_stack.append(cursor.right)
             print(cursor.data)
             cursor = cursor.left
 
             # If we hit a leaf while going down the left, pop a
             # node off the stack and make a pass from that point.
             if not cursor:
-                if len(self.right_stack) > 0:
-                    cursor = self.right_stack.pop()
+                if len(right_stack) > 0:
+                    cursor = right_stack.pop()
 
 # Make some nodes for the tree.
 nodeA = Node("A")
