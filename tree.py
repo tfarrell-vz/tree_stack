@@ -27,6 +27,28 @@ class BinaryTree:
                 if len(right_stack) > 0:
                     cursor = right_stack.pop()
 
+    def inorder_traversal(self):
+        next_node_stack = []
+        cursor = self.root
+
+        while cursor:
+            next_node_stack.append(cursor)
+
+            if not cursor.left:
+                while len(next_node_stack) > 0:
+                    top = next_node_stack.pop()
+                    print(top.data)
+
+                    if top.right:
+                        cursor = top.right
+                        break
+
+                    elif not top.right and len(next_node_stack) == 0:
+                        cursor = None
+
+            else:
+                cursor = cursor.left
+
 # Make some nodes for the tree.
 nodeA = Node("A")
 nodeB = Node("B")
@@ -64,5 +86,7 @@ for node in node_list:
 # Set up a tree and traverse it
 victory_tree = BinaryTree(nodeA)
 victory_tree.preorder_traversal()
+print()
+victory_tree.inorder_traversal()
 
 
