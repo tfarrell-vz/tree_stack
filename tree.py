@@ -63,14 +63,17 @@ node_list = []
 node_list.extend((nodeA, nodeB, nodeC, nodeD, nodeE, nodeF, nodeG))
 
 # Connect the nodes into a tree data structure.
-nodeA.left = nodeB
-nodeA.right = nodeC
+def make_tree_one():
+    nodeA.left = nodeB
+    nodeA.right = nodeC
 
-nodeB.left = nodeD
-nodeB.right = nodeE
+    nodeB.left = nodeD
+    nodeB.right = nodeE
 
-nodeC.left = nodeF
-nodeC.right = nodeG
+    nodeC.left = nodeF
+    nodeC.right = nodeG
+
+    return BinaryTree(nodeA)
 
 # Ensure that the tree is arranged properly
 for node in node_list:
@@ -84,7 +87,7 @@ for node in node_list:
     print()
 
 # Set up a tree and traverse it
-victory_tree = BinaryTree(nodeA)
+victory_tree = make_tree_one()
 victory_tree.preorder_traversal()
 print()
 victory_tree.inorder_traversal()
