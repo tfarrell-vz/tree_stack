@@ -1,8 +1,36 @@
+import time
+
 class Node:
     def __init__(self, data, left=None, right=None):
         self.data = data
         self.left = left
         self.right = right
+
+    def rec_preorder(self):
+        print(self.data)
+        if self.left:
+            self.left.rec_preorder()
+
+        if self.right:
+            self.right.rec_preorder()
+
+    def rec_inorder(self):
+        if self.left:
+            self.left.rec_inorder()
+
+        print(self.data)
+
+        if self.right:
+            self.right.rec_inorder()
+
+    def rec_postorder(self):
+        if self.left:
+            self.left.rec_postorder()
+
+        if self.right:
+            self.right.rec_postorder()
+
+        print(self.data)
 
 class BinaryTree:
     def __init__(self, root):
@@ -88,8 +116,27 @@ for node in node_list:
 
 # Set up a tree and traverse it
 victory_tree = make_tree_one()
+
+print("Preorder using stack")
+start_time = time.time()
 victory_tree.preorder_traversal()
-print()
+end_time = time.time()
+time_elapsed = end_time-start_time
+print("Time elapsed: %s \n" % time_elapsed)
+
+print("Recursive preorder")
+start_time=time.time()
+nodeA.rec_preorder()
+end_time = time.time()
+time_elapsed = end_time - start_time
+print("Time elapsed: %s \n" % time_elapsed)
+
+print("Inorder using stack")
 victory_tree.inorder_traversal()
+print()
+
+print("Recursive postorder")
+nodeA.rec_postorder()
+print()
 
 
