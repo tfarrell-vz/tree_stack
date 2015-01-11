@@ -7,6 +7,12 @@ class Node:
         self.right = right
 
     def rec_preorder(self):
+        """
+        Preorder traversal:
+        visit root - yield data
+        visit left subtree, traverse preorder (recursive call)
+        visit right subtree, traverse preorder (recursive call)
+        """
         print(self.data)
         if self.left:
             self.left.rec_preorder()
@@ -15,6 +21,9 @@ class Node:
             self.right.rec_preorder()
 
     def rec_inorder(self):
+        """
+        Left, Root, Right
+        """
         if self.left:
             self.left.rec_inorder()
 
@@ -24,6 +33,9 @@ class Node:
             self.right.rec_inorder()
 
     def rec_postorder(self):
+        """
+        Left, Right, Root
+        """
         if self.left:
             self.left.rec_postorder()
 
