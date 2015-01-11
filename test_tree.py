@@ -1,12 +1,7 @@
 from tree import Node, BinaryTree
 
-nodeA = Node("A")
-nodeB = Node("B")
-nodeC = Node("C")
-nodeD = Node("D")
-nodeE = Node("E")
-nodeF = Node("F")
-nodeG = Node("G")
+nodeA, nodeB, nodeC, nodeD = Node("A"), Node("B"), Node("C"), Node("D")
+nodeE, nodeF, nodeG = Node("E"), Node("F"), Node("G")
 
 nodeA.left = nodeB
 nodeA.right = nodeC
@@ -34,4 +29,3 @@ class TestNode:
         nodeA.rec_postorder()
         out, err = capsys.readouterr()
         assert out == "\n".join(["D", "E", "B", "F", "G", "C", "A\n"])
-
