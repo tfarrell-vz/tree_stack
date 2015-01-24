@@ -93,7 +93,25 @@ class BinaryTree:
         left_stack = []
         right_stack = []
         cursor = self.root
-        pass
+
+        while cursor:
+            left_stack.append(cursor)
+
+            if not cursor.left:
+                if not cursor.right:
+                    if len(right_stack) > 0:
+                        print(right_stack.pop())
+
+                    elif len(left_stack) > 0:
+                        top = left_stack.pop()
+
+                        if top.right:
+                            right_stack.append(top)
+                            cursor = top.right
+
+                    else:
+                        cursor = None
+
 
 # Make some nodes for the tree.
 nodeA = Node("A")
@@ -157,4 +175,7 @@ print("Recursive postorder")
 nodeA.rec_postorder()
 print()
 
+print("Postorder using stack")
+nodeA.rec_postorder()
+print()
 
