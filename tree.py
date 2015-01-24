@@ -68,22 +68,22 @@ class BinaryTree:
                     cursor = right_stack.pop()
 
     def inorder_traversal(self):
-        next_node_stack = []
+        node_stack = []
         cursor = self.root
 
         while cursor:
-            next_node_stack.append(cursor)
+            node_stack.append(cursor)
 
             if not cursor.left:
-                while len(next_node_stack) > 0:
-                    top = next_node_stack.pop()
+                while len(node_stack) > 0:
+                    top = node_stack.pop()
                     print(top.data)
 
                     if top.right:
                         cursor = top.right
                         break
 
-                    elif not top.right and len(next_node_stack) == 0:
+                    elif not top.right and len(node_stack) == 0:
                         cursor = None
 
             else:
