@@ -89,6 +89,12 @@ class BinaryTree:
             else:
                 cursor = cursor.left
 
+    def post_order_traversal(self):
+        left_stack = []
+        right_stack = []
+        cursor = self.root
+        passS
+
 # Make some nodes for the tree.
 nodeA = Node("A")
 nodeB = Node("B")
