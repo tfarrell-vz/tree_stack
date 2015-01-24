@@ -93,7 +93,7 @@ class BinaryTree:
         left_stack = []
         right_stack = []
         cursor = self.root
-        passS
+        pass
 
 # Make some nodes for the tree.
 nodeA = Node("A")
