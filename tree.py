@@ -1,5 +1,6 @@
 import time
 
+
 class Node:
     def __init__(self, data, left=None, right=None):
         self.data = data
@@ -43,6 +44,7 @@ class Node:
             self.right.rec_postorder()
 
         print(self.data)
+
 
 class BinaryTree:
     def __init__(self, root):
@@ -113,21 +115,23 @@ class BinaryTree:
                         cursor = None
 
 
-# Make some nodes for the tree.
-nodeA = Node("A")
-nodeB = Node("B")
-nodeC = Node("C")
-nodeD = Node("D")
-nodeE = Node("E")
-nodeF = Node("F")
-nodeG = Node("G")
-
-# Put the nodes in a list.
-node_list = []
-node_list.extend((nodeA, nodeB, nodeC, nodeD, nodeE, nodeF, nodeG))
-
 # Connect the nodes into a tree data structure.
 def make_tree_one():
+    """Constructs our tree."""
+
+    # Make some nodes for the tree.
+    nodeA = Node("A")
+    nodeB = Node("B")
+    nodeC = Node("C")
+    nodeD = Node("D")
+    nodeE = Node("E")
+    nodeF = Node("F")
+    nodeG = Node("G")
+
+    # Put the nodes in a list.
+    node_list = []
+    node_list.extend((nodeA, nodeB, nodeC, nodeD, nodeE, nodeF, nodeG))
+
     nodeA.left = nodeB
     nodeA.right = nodeC
 
@@ -137,45 +141,50 @@ def make_tree_one():
     nodeC.left = nodeF
     nodeC.right = nodeG
 
+    # Ensure that the tree is arranged properly.
+    for node in node_list:
+        print(node.data)
+        if node.left:
+            print("Left:" + node.left.data)
+        if node.right:
+            print("Right:" + node.right.data)
+        if not node.left and not node.right:
+            print("leaf")
+        print()
+
     return BinaryTree(nodeA)
 
-# Ensure that the tree is arranged properly
-for node in node_list:
-    print(node.data)
-    if node.left:
-        print("Left:" + node.left.data)
-    if node.right:
-        print("Right:" + node.right.data)
-    if not node.left and not node.right:
-        print("leaf")
+
+def main():
+    # Set up a tree.
+    victory_tree = make_tree_one()
+
+    print("Preorder using stack")
+    start_time = time.time()
+    victory_tree.preorder_traversal()
+    end_time = time.time()
+    time_elapsed = end_time-start_time
+    print("Time elapsed: %s \n" % time_elapsed)
+
+    print("Recursive preorder")
+    start_time=time.time()
+    victory_tree.root.rec_preorder()
+    end_time = time.time()
+    time_elapsed = end_time - start_time
+    print("Time elapsed: %s \n" % time_elapsed)
+
+    print("Inorder using stack")
+    victory_tree.inorder_traversal()
     print()
 
-# Set up a tree and traverse it
-victory_tree = make_tree_one()
+    print("Recursive postorder")
+    victory_tree.root.rec_postorder()
+    print()
 
-print("Preorder using stack")
-start_time = time.time()
-victory_tree.preorder_traversal()
-end_time = time.time()
-time_elapsed = end_time-start_time
-print("Time elapsed: %s \n" % time_elapsed)
+    print("Postorder using stack")
+    victory_tree.root.rec_postorder()
+    print()
 
-print("Recursive preorder")
-start_time=time.time()
-nodeA.rec_preorder()
-end_time = time.time()
-time_elapsed = end_time - start_time
-print("Time elapsed: %s \n" % time_elapsed)
 
-print("Inorder using stack")
-victory_tree.inorder_traversal()
-print()
-
-print("Recursive postorder")
-nodeA.rec_postorder()
-print()
-
-print("Postorder using stack")
-nodeA.rec_postorder()
-print()
-
+if __name__ == '__main__':
+    main()
